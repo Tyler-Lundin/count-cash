@@ -7,9 +7,10 @@ type Props = {
   onConfirm: () => void;
   onEdit: () => void;
   onReset: () => void;
+  onCopy?: () => void;
 };
 
-export default function ActionsBar({ confirmed, onConfirm, onEdit, onReset }: Props) {
+export default function ActionsBar({ confirmed, onConfirm, onEdit, onReset, onCopy }: Props) {
   return (
     <Card>
       <div className="flex justify-end gap-2">
@@ -30,6 +31,15 @@ export default function ActionsBar({ confirmed, onConfirm, onEdit, onReset }: Pr
             >
               Edit
             </button>
+            {onCopy && (
+              <button
+                type="button"
+                onClick={onCopy}
+                className="px-4 h-10 rounded-lg border border-neutral-300 dark:border-neutral-700"
+              >
+                Copy total
+              </button>
+            )}
             <button
               type="button"
               onClick={onReset}

@@ -38,7 +38,19 @@ export default function FloatSettings({ floatCents, onChange }: Props) {
         </div>
       </div>
       <div className="mt-2 text-xs text-neutral-500">Current: {formatCurrency(Math.round(Number(value.replace(/[^0-9.]/g, '') || '0') * 100))}</div>
+      <div className="mt-3 flex items-center gap-2">
+        <span className="text-xs text-neutral-500">Quick set:</span>
+        {[100,200,300].map((d) => (
+          <button
+            key={d}
+            type="button"
+            onClick={() => onChange(d*100)}
+            className="h-8 px-2 text-xs rounded-lg border border-neutral-300 dark:border-neutral-700"
+          >
+            {'$' + d}
+          </button>
+        ))}
+      </div>
     </Card>
   );
 }
-
