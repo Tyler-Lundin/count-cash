@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <div>
       <div className="mx-auto max-w-md px-4 pt-8">
-        <p className="-mt-2 mb-3 text-sm text-neutral-600 dark:text-neutral-400 text-center sm:text-left">
+        <p className="-mt-2 mb-3 text-sm text-[var(--foreground)] text-center sm:text-left">
           Example: $120 bill, 20% tip, 4 people → $36.00 each.
         </p>
       </div>

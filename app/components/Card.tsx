@@ -9,13 +9,13 @@ export default function Card({ title, className, children }: Props) {
   return (
     <section
       className={
-        'rounded-xl border border-neutral-200/60 dark:border-neutral-800/80 bg-white dark:bg-neutral-950 shadow-sm ' +
-        'p-4 ' +
+        'rounded-xl border border-neutral-200/60 dark:border-neutral-800/80 bg-[var(--background)] text-[var(--foreground)] shadow-sm ' +
+        'p-3 sm:p-4 ' +
         (className ?? '')
       }
     >
       {title ? (
-        <h2 className="text-base font-semibold mb-2 text-neutral-800 dark:text-neutral-200">
+        <h2 className="text-base font-semibold mb-2 text-[var(--foreground)]">
           {title}
         </h2>
       ) : null}
@@ -23,4 +23,3 @@ export default function Card({ title, className, children }: Props) {
     </section>
   );
 }
-

@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div>
       <div className="mx-auto max-w-md px-4 pt-8">
-        <p className="-mt-2 mb-3 text-sm text-neutral-600 dark:text-neutral-400 text-center sm:text-left">
+        <p className="-mt-2 mb-3 text-sm text-[var(--foreground)] text-center sm:text-left">
           Take out exactly what you need to leave your target float. Example: counts total $683.00, float is $200.00 → pull $483.00.
         </p>
       </div>

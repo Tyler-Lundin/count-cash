@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import NavMenu from "./components/NavMenu";
 import SiteFooter from "./components/SiteFooter";
+import ThemeProvider from "./components/ThemeProvider";
+import Background from "./components/Background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,14 +40,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NavMenu />
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
-          <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-sm p-3 sm:p-6">
-            {children}
-            <SiteFooter />
+        <ThemeProvider>
+          <Background />
+          <NavMenu />
+          <div className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
+            <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-[var(--background)]/80  text-[var(--foreground)] shadow-sm p-3 sm:p-6">
+              {children}
+            </div>
           </div>
-        </div>
-        <Analytics />
+          <SiteFooter />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

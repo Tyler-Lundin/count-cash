@@ -19,7 +19,7 @@ export default function BillCounterTool() {
     }
   };
   return (
-    <div className="mx-auto max-w-md px-4 pb-24 pt-8">
+    <div className="mx-auto max-w-md px-3 sm:px-4 pb-24 pt-8">
       <h1 className="text-xl font-semibold mb-3 text-center sm:text-left">Bill Counter</h1>
       <BillCounters counts={counts} onChange={update} />
       <div className="h-3" />
@@ -30,7 +30,7 @@ export default function BillCounterTool() {
         </div>
       </Card>
       <div className="sticky bottom-0 left-0 right-0 bg-white/80 dark:bg-neutral-950/80 backdrop-blur border-t border-neutral-200 dark:border-neutral-800" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom))' }}>
-        <div className="mx-auto max-w-md px-4 py-3 flex items-center gap-4">
+        <div className="mx-auto max-w-md px-3 sm:px-4 py-3 flex items-center gap-4">
           <div className="flex-1">
             <div className="text-xs text-neutral-500">Total</div>
             <div className="font-semibold">{formatCurrency(billsTotal)}</div>

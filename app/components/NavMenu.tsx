@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { TOOLS } from "../lib/tools";
+import Logo from "./Logo";
+import ThemeMenu from "./ThemeMenu";
 
 type Tool = {
   href: string;
@@ -72,6 +74,10 @@ function MobileTopDrawerNav({
         transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.6 }}
       >
         <MobileDrawerSurface>
+          <div className="px-4 py-2 flex items-center justify-between">
+            <div className="text-sm font-medium">Tools</div>
+            <ThemeMenu />
+          </div>
           <MobileDrawerList tools={tools} onNavigate={() => setOpen(false)} />
         </MobileDrawerSurface>
 
@@ -83,7 +89,7 @@ function MobileTopDrawerNav({
 
 function MobileDrawerSurface({ children }: { children: React.ReactNode }) {
   return (
-    <div className="w-full border-b border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-neutral-950/95 backdrop-blur shadow-lg">
+    <div className="w-full border-b border-neutral-200 dark:border-neutral-800 bg-[var(--background)] text-[var(--foreground)] backdrop-blur shadow-lg">
       {children}
     </div>
   );
@@ -170,8 +176,10 @@ function DesktopDropdownNav({
   tools: Tool[];
 }) {
   return (
-    <div className="hidden sm:block pointer-events-auto relative mx-auto max-w-7xl px-4 pt-4 z-30">
+    <div className="hidden sm:block pointer-events-auto relative mx-auto  px-4 pt-4 z-30">
       <div className="flex justify-end">
+        <Logo /> 
+        <div className="ml-auto mr-2"><ThemeMenu /></div>
         <DesktopMenuButton open={open} onToggle={() => setOpen((v) => !v)} />
       </div>
 
@@ -194,7 +202,7 @@ function DesktopDropdownNav({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 z-30 mt-2 w-[min(92vw,320px)] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-lg"
+              className="absolute right-0 z-30 mt-2 w-[min(92vw,320px)] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-[var(--background)] text-[var(--foreground)] shadow-lg"
             >
               <ul className="p-2">
                 {tools.map((t) => (
@@ -233,7 +241,7 @@ function DesktopMenuButton({
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
       onClick={onToggle}
-      className="h-8 w-8 rounded-full bg-white/60 dark:bg-neutral-900/60 hover:bg-white/80 dark:hover:bg-neutral-800/80 text-neutral-700 dark:text-neutral-200 flex items-center justify-center shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-300/60 dark:focus:ring-neutral-700/60"
+      className="h-8 w-8 rounded-full bg-blue-100/60 dark:bg-neutral-900/60 hover:bg-white/80 dark:hover:bg-neutral-800/80 text-neutral-700 dark:text-neutral-200 flex items-center justify-center shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-300/60 dark:focus:ring-neutral-700/60"
     >
       {open ? <IconX /> : <IconMenu />}
     </button>

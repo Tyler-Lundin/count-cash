@@ -53,7 +53,7 @@ export default function CashCounter({ title = 'Cash Counter' }: { title?: string
   };
 
   return (
-    <div className="mx-auto max-w-md px-4 pb-24 pt-8">
+    <div className="mx-auto max-w-md px-3 sm:px-4 pb-24 pt-8">
       <h1 className="text-xl font-semibold mb-3 text-center sm:text-left">{title}</h1>
       <div className="mb-2 flex items-center justify-center sm:justify-start gap-2 text-sm">
         <label className="inline-flex items-center gap-2">

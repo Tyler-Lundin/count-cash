@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <div>
       <div className="mx-auto max-w-md px-4 pt-8">
-        <p className="-mt-2 mb-3 text-sm text-neutral-600 dark:text-neutral-400 text-center sm:text-left">
+        <p className="-mt-2 mb-3 text-sm text-[var(--foreground)] text-center sm:text-left">
           Make change instantly. Example: due $13.27, paid $20.00 → $6.73 back.
         </p>
       </div>

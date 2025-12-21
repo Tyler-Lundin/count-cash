@@ -31,16 +31,19 @@ export default function Counter({ id, label, value, onChange, step = 1, min = 0,
   };
 
   return (
-    <div className="flex items-center justify-between py-2">
-      <label htmlFor={id} className={`text-sm text-neutral-700 dark:text-neutral-300 flex-1 ${labelClassName ?? ''}`}>
+    <div className="flex items-center justify-between py-2 min-w-0">
+      <label
+        htmlFor={id}
+        className={`text-sm text-neutral-700 dark:text-neutral-300 flex-1 truncate ${labelClassName ?? ''}`}
+      >
         {label}
       </label>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 shrink-0">
         <button
           type="button"
           onClick={dec}
           disabled={disabled}
-          className="h-11 w-11 rounded-lg border border-neutral-300 dark:border-neutral-700 text-xl leading-none"
+          className="h-10 w-10 sm:h-11 sm:w-11 rounded-lg border border-neutral-300 dark:border-neutral-700 text-lg sm:text-xl leading-none"
           aria-label={`Decrease ${label}`}
         >
           −
@@ -49,7 +52,7 @@ export default function Counter({ id, label, value, onChange, step = 1, min = 0,
           id={id}
           inputMode="numeric"
           pattern="[0-9]*"
-          className="w-20 h-11 text-center rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent disabled:opacity-60"
+          className="w-16 sm:w-20 h-10 sm:h-11 text-center rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent disabled:opacity-60"
           value={String(value)}
           onChange={onInput}
           disabled={disabled}
@@ -58,7 +61,7 @@ export default function Counter({ id, label, value, onChange, step = 1, min = 0,
           type="button"
           onClick={inc}
           disabled={disabled}
-          className="h-11 w-11 rounded-lg border border-neutral-300 dark:border-neutral-700 text-xl leading-none"
+          className="h-10 w-10 sm:h-11 sm:w-11 rounded-lg border border-neutral-300 dark:border-neutral-700 text-lg sm:text-xl leading-none"
           aria-label={`Increase ${label}`}
         >
           +
