@@ -103,7 +103,7 @@ function MobileDrawerList({
   onNavigate: () => void;
 }) {
   return (
-    <ul className="py-2">
+    <ul className="py-2 divide-y divide-neutral-200/[0.45] dark:divide-neutral-800/[0.45]">
       {tools.map((t) => (
         <li key={t.href}>
           <Link
