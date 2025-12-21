@@ -170,7 +170,7 @@ function DesktopDropdownNav({
   tools: Tool[];
 }) {
   return (
-    <div className="hidden sm:block pointer-events-auto relative mx-auto max-w-md px-4 pt-3 z-30">
+    <div className="hidden sm:block pointer-events-auto relative mx-auto max-w-7xl px-4 pt-4 z-30">
       <div className="flex justify-end">
         <DesktopMenuButton open={open} onToggle={() => setOpen((v) => !v)} />
       </div>
@@ -278,4 +278,3 @@ function IconX() {
     </svg>
   );
 }
-

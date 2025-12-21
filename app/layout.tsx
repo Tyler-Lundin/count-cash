@@ -37,12 +37,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavMenu />
-        {children}
-        <SiteFooter />
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:py-6">
+          <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-sm p-3 sm:p-6">
+            {children}
+            <SiteFooter />
+          </div>
+        </div>
         <Analytics />
       </body>
     </html>
