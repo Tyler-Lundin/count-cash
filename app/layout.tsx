@@ -30,6 +30,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
@@ -43,7 +47,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Background />
           <NavMenu />
-          <div className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
+          <div className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6 pb-24">
             <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-[var(--background)]/80  text-[var(--foreground)] shadow-sm p-3 sm:p-6">
               {children}
             </div>

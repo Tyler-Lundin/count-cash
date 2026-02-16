@@ -30,13 +30,22 @@ export default function DrawerBreakdown({ counts, floatCents }: Props) {
   return (
     <Card title="Removal Breakdown (Large → Small)">
       <ul className="divide-y divide-neutral-200 dark:divide-neutral-800">
-        {items.map(({ d, count, value }) => (
-          <li key={d} className="py-2 flex items-center">
-            <span className="text-sm text-neutral-700 dark:text-neutral-300">{labelFor(d)}</span>
-            <span className="ml-auto text-sm tabular-nums">x{count}</span>
-            <span className="ml-3 text-sm text-neutral-500">{formatCurrency(count * value)}</span>
-          </li>
-        ))}
+        {items.map(({ d, count, value }) => {
+          const totalCount = counts[d];
+          const isAll = count === totalCount;
+          return (
+            <li key={d} className="py-2 flex items-center">
+              <span className="text-sm text-neutral-700 dark:text-neutral-300">{labelFor(d)}</span>
+              <span className="ml-auto text-sm tabular-nums font-medium">
+                x{count}
+                <span className="ml-1 text-[10px] text-neutral-400 font-normal uppercase">
+                  {isAll ? '(All)' : `(${count}/${totalCount})`}
+                </span>
+              </span>
+              <span className="ml-3 text-sm text-neutral-500">{formatCurrency(count * value)}</span>
+            </li>
+          );
+        })}
       </ul>
       <div className="mt-3 flex items-center text-sm">
         <span className="text-neutral-600">Total to remove</span>

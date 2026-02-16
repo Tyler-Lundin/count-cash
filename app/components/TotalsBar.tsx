@@ -15,7 +15,7 @@ export default function TotalsBar({ counts, floatCents, onReset, onCopy }: Props
   const takeOut = planRemoval(counts, floatCents).takeOut;
   const copyText = `Total: ${formatCurrency(total)} • Take out: ${formatCurrency(takeOut)}`;
   return (
-    <div className="sticky bottom-0 left-0 right-0 bg-white/80 dark:bg-neutral-950/80 backdrop-blur border-t border-neutral-200 dark:border-neutral-800" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom))' }}>
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur border-t border-neutral-200 dark:border-neutral-800" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom))' }}>
       <div className="mx-auto max-w-md px-3 sm:px-4 py-3 flex items-center gap-4">
         <div className="flex-1">
           <div className="text-xs text-neutral-500">Total</div>

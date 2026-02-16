@@ -1,127 +1,35 @@
-import Link from "next/link";
-import Image from "next/image";
-import { TOOLS } from "./lib/tools";
+import CashCounter from "./components/CashCounter";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cash Drawer Target Float Calculator | Count Cash",
+  description: "Enter cash counts and get a large-to-small removal breakdown to leave your target drawer float (e.g., $200).",
+};
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden rounded-lg mx-auto max-w-5xl px-3 sm:px-4 py-8">
-      <header className="mb-6">
-        <nav aria-label="Primary" className="hidden" />
-      </header>
-      <main className="">
-        <h1 className="text-3xl font-semibold text-center sm:text-left">Cash Tools</h1>
-        <p className="mt-2 text-[var(--foreground)] text-center sm:text-left">
-          Fast, mobile-first calculators for counting cash, making change, and closing tills.
+    <div>
+      <div className="mx-auto max-w-md px-4 pt-8">
+        <p className="-mt-2 mb-3 text-sm text-[var(--foreground)] text-center sm:text-left">
+          Take out exactly what you need to leave your target float. Example: counts total $683.00, float is $200.00 → pull $483.00.
         </p>
-        <section className="mt-6 grid grid-cols-1 gap-4">
-          {TOOLS.map((it) => <Tool it={it} key={it.href}/>)}
-        </section>
-      </main>
+      </div>
+      <CashCounter title="Cash Drawer Target Float" />
+      <section className="mx-auto max-w-2xl px-4 mt-8 text-sm text-neutral-700 dark:text-neutral-300 space-y-3">
+        <h2 className="text-base font-semibold">How this works</h2>
+        <p>
+          Enter the number of each coin and bill. Set your target float (default $200). The calculator computes your total and shows a large‑to‑small breakdown of what to remove so your drawer is left as close as possible to the target amount.
+        </p>
+        <p>
+          This tool uses integer math to avoid rounding issues and a greedy, high‑to‑low strategy that matches typical U.S. cash handling. If an exact float isn’t possible, it keeps the closest viable amount and shows any shortfall.
+        </p>
+        <h3 className="mt-4 text-sm font-semibold">FAQ</h3>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>What denominations are supported? Pennies through $100 bills.</li>
+          <li>Can I change the float? Yes — quick presets and a custom amount are supported.</li>
+          <li>Does this work offline? Yes — it’s a PWA designed for mobile use.</li>
+        </ul>
+      </section>
     </div>
   );
 }
-
-
-function Tool({ it }: { it: typeof TOOLS[number] }) {
-  return (
-    <Link
-      href={it.href}
-      className={[
-        // layout
-        "group relative block overflow-hidden rounded-2xl p-4 sm:p-5",
-        // surface
-        "bg-[var(--background)] text-[var(--foreground)]",
-        "border border-neutral-200/70 dark:border-neutral-800/80",
-        // depth
-        "shadow-sm hover:shadow-lg transition-all duration-200",
-        // focus
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
-      ].join(" ")}
-    >
-      {/* subtle hover sheen */}
-      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        <div className="absolute -inset-24 bg-gradient-to-tr from-cyan-500/10 via-transparent to-purple-500/10 rotate-12" />
-      </div>
-
-      <div className="relative flex items-start gap-4 sm:gap-5">
-        {/* icon well */}
-        <div
-          className={[
-            "shrink-0 relative grid place-items-center",
-            "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl",
-            "border border-neutral-200/70 dark:border-neutral-800/80",
-            "bg-neutral-50 dark:bg-neutral-900",
-            "shadow-inner",
-            "transition-transform duration-200 group-hover:-translate-y-0.5",
-          ].join(" ")}
-        >
-          {it.image ? (
-            <Image
-              src={it.image}
-              alt={it.imageAlt ?? ""}
-              width={72}
-              height={72}
-              className="w-10 h-10 sm:w-11 sm:h-11 object-contain drop-shadow-sm"
-              priority={false}
-            />
-          ) : (
-            <div className="w-9 h-9 rounded-xl bg-neutral-200 dark:bg-neutral-800" />
-          )}
-        </div>
-
-        {/* text */}
-        <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <div className="text-base sm:text-lg font-semibold tracking-tight leading-snug line-clamp-2">
-                {it.title}
-              </div>
-            </div>
-
-            {/* CTA arrow */}
-            <div
-              className={[
-                "mt-0.5 shrink-0",
-                "rounded-full border border-neutral-200/70 dark:border-neutral-800/80",
-                "bg-neutral-50 dark:bg-neutral-900",
-                "w-9 h-9 grid place-items-center",
-                "transition-all duration-200",
-                "group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
-              ].join(" ")}
-              aria-hidden
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M7 17L17 7" />
-                <path d="M9 7h8v8" />
-              </svg>
-            </div>
-          </div>
-
-          <div className="mt-1.5 text-sm sm:text-[15px] leading-relaxed text-[var(--foreground)]/70 line-clamp-2">
-            {it.desc}
-          </div>
-
-          {/* tiny “meta” row */}
-          <div className="mt-3 flex items-center gap-2 text-xs text-[var(--foreground)]/55">
-            <span className="inline-flex items-center gap-1 rounded-full border border-neutral-200/60 dark:border-neutral-800/70 px-2 py-1 bg-neutral-50/60 dark:bg-neutral-900/60">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/80" />
-              Tool
-            </span>
-            <span className="opacity-70 group-hover:opacity-100 transition-opacity">
-              Open →
-            </span>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
