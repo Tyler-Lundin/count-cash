@@ -1,21 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import NavMenu from "./components/NavMenu";
 import SiteFooter from "./components/SiteFooter";
 import ThemeProvider from "./components/ThemeProvider";
 import Background from "./components/Background";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Cash Counter",
@@ -43,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased">
         <ThemeProvider>
           <Background />
           <NavMenu />
@@ -53,7 +41,6 @@ export default function RootLayout({
             </div>
           </div>
           <SiteFooter />
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>
